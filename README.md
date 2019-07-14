@@ -1,2 +1,2 @@
-# Js
-Javascript tests
+# Javascript Projects for CodeAcademy
+
