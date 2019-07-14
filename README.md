@@ -1,2 +1,2 @@
-# Js
+# Javascript 
 Javascript tests
