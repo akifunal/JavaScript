@@ -2,4 +2,4 @@
 
 The Datamuse API is a lexical search service for developers.
 
-In this small project, I tried to make a GET request to the Datamyse API to search for words that rhyme.
+In this small project, I tried to make a GET request to the Datamuse API to search for words that rhyme.
