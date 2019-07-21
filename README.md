@@ -1,4 +1,4 @@
 # Javascript Projects for courses 
 
-(CodeAcademy, Udemy)
+CodeAcademy, Udemy
 
