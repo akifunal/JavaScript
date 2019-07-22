@@ -6,4 +6,4 @@ In this exercise, I tried to make a POST request to the Rebrandly API to shorten
 
 
 
-Pattern: https://s3.amazonaws.com/codecademy-content/courses/intermediate-javascript-requests/diagrams/XHR+POST+diagram.svg
+Diagram: https://s3.amazonaws.com/codecademy-content/courses/intermediate-javascript-requests/diagrams/XHR+POST+diagram.svg
