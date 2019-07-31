@@ -1,3 +1,14 @@
+const notes = [{
+    title: 'My next trip',
+    body: 'I would like to go to Spain'
+}, {
+    title: 'Habbits to work on',
+    body: 'Exercise. Eating a bit better.'
+}, {
+    title: 'Office modification',
+    body: 'Get a new seat'
+}];
+
 //DOM -Document Object Model
 
 //Query and remove
@@ -12,3 +23,7 @@ ps.forEach((p) => {
     console.log(p.textContent);
     //p.remove();
 });
+
+const newHeader = document.createElement('h1');
+newHeader.textContent = 'Test Header :)';
+document.querySelector('body').appendChild(newHeader);
