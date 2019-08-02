@@ -2,28 +2,44 @@ const notes = [{
     title: 'My next trip',
     body: 'I would like to go to Spain'
 }, {
-    title: 'Habbits to work on',
+    title: 'Habbits to Work on',
     body: 'Exercise. Eating a bit better.'
 }, {
     title: 'Office modification',
     body: 'Get a new seat'
 }];
 
-//DOM -Document Object Model
+const filters = {
+    searchText: ''
+};
 
-//Query and remove
-// const p = document.querySelector('p');
-// p.remove();
+const renderNotes = (notes, filters) => {
+    const filteredNotes = notes.filter((note) => {
+        return note.title.toLowerCase().includes(filters.searchText.toLowerCase());
+    })
 
+    document.querySelector('#notes').innerHTML = '';
 
-//Query and remove all
-const ps = document.querySelectorAll('p');
+    filteredNotes.forEach((note) => {
+        const noteEl = document.createElement('p');
+        noteEl.textContent = note.title;
+        document.querySelector('#notes').appendChild(noteEl);
+    })
+};
 
-ps.forEach((p) => {
-    console.log(p.textContent);
-    //p.remove();
-});
+renderNotes(notes, filters);
 
-const newHeader = document.createElement('h1');
-newHeader.textContent = 'Test Header :)';
-document.querySelector('body').appendChild(newHeader);
+document.querySelector('#create-note').addEventListener('click',(e) => {
+    e.target.textContent = 'The button was clicked';
+})
+
+document.querySelector('#remove-all').addEventListener('click', () => {
+    document.querySelectorAll('.note').forEach(note => {
+        note.remove();
+    });
+})
+
+document.querySelector('#search-text').addEventListener('input', (e) => {
+    filters.searchText = e.target.value;
+    renderNotes(notes, filters);
+})
