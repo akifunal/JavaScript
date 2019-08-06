@@ -16,13 +16,25 @@ const todos = [{
 }];
 
 const filters = {
-    searchText: ''
+    searchText: '',
+    hideCompleted: false
 };
 
 const renderTodos = (todos, filters) => {
     const filteredTodos = todos.filter((todo) => {
-        return todo.text.toLowerCase().includes(filters.searchText.toLowerCase());
+        const searchTextMatch = todo.text.toLowerCase().includes(filters.searchText.toLowerCase());
+        const hideCompletedMatch = !filters.hideCompleted || !todo.completed;
+        return searchTextMatch && hideCompletedMatch;
     });
+
+    // filteredTodos = filteredTodos.filter((todo) => {
+    //     // return !filters.hideCompleted || !todo.completed;
+    //     // // if(filters.hideCompleted) {
+    //     // //     return !todo.completed
+    //     // // }else {
+    //     // //     return true;
+    //     // // }
+    // })
 
     const incompleteTodos = filteredTodos.filter((todo) => {
         return !todo.completed;
@@ -43,21 +55,21 @@ const renderTodos = (todos, filters) => {
 
 renderTodos(todos, filters);
 
-
-
-// Listen for new todo creation
-document.querySelector('#add-todo').addEventListener('click', (e) => {
-    console.log('Add a new todo...');
-})
-
-
-// Listen for todo text change
-document.querySelector('#new-todo-text').addEventListener('input', (e) => {
-    console.log(e.target.value);
-})
-
-
 document.querySelector('#search-text').addEventListener('input', (e) => {
     filters.searchText = e.target.value;
     renderTodos(todos, filters);
+});
+
+document.querySelector('#add-todo').addEventListener('submit', (e) => {
+    e.preventDefault();
+    todos.push({
+        text: e.target.elements.newTodo.value,
+        completed: false})
+    renderTodos(todos, filters);
+    e.target.elements.newTodo.value = '';
 })
+
+document.querySelector('#hide-completed').addEventListener('change', (e) => {
+    filters.hideCompleted = e.target.checked;
+    renderTodos(todos, filters);
+});
