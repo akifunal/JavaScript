@@ -14,8 +14,8 @@ class School {
       return this._numberOfStudents;
     }
     set numberOfStudents(newNumberOfStudents) {
-      if(newNumberOfStudents.isNaN()){
-        console.log(`Invalid input: number of students must be set to a Number. `);
+      if(isNaN(newNumberOfStudents)){
+        console.log ('Invalid input: number of students must be set to a Number.');
       }
       else {
         this.numberOfStudents = newNumberOfStudents;
@@ -59,10 +59,12 @@ class School {
   const lorraineHansbury = new PrimarySchool('Lorraine Hansbury', 514, 'Students must be picked up by a parent, guardian, or a family member over the age of 13.');
   
   lorraineHansbury.quickFacts();
+
   const sub = School.pickSubstituteTeacher(['Jamal Crawford', 'Lou Williams', 'J. R. Smith', 'James Harden', 'Jason Terry', 'Manu Ginobli']);
   
-  const alSmith = new HighSchool('Al E. Smith', 415, ['Baseball', 'Basketball', 'Volleyball', 'Track and Field']);
+  const alSmith = new HighSchool('Al E. Smith', 'asd32ses', ['Baseball', 'Basketball', 'Volleyball', 'Track and Field']);
   alSmith.sportsTeams;
-  
+  alSmith.numberOfStudents = 'test asdfasdfasdf';
+  console.log(alSmith.numberOfStudents);
   
   
