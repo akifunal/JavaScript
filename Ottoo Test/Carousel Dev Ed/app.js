@@ -12,12 +12,12 @@ myImage.scrollIntoView({behavior: 'smooth'});
 const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');
 
-// setInterval(function() {
-//     for (var i = 1; i < carouselImages.length - 1; i++) {
-//         myImage.style.opacity = 1;
-//     }
-//     myImage.style.opacity = 0.5;
-//   }, 500);
+setInterval(function() {
+    for (var i = 1; i < carouselImages.length - 1; i++) {
+        myImage.style.opacity = 1;
+    }
+    myImage.style.opacity = 0.5;
+  }, 500);
 
 
 // Button Listeners

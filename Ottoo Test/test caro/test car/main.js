@@ -2,6 +2,7 @@ const next_btn = document.querySelector('#next');
 const prev_btn = document.querySelector('#prev');
 const slider = document.querySelector('.slider');
 const nav = document.querySelector('.carousel__nav');
+
 let first_slide;
 let first_dot;
 let last_slide;
@@ -23,20 +24,40 @@ let projects = [{
         type: "Game",
         content: "Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
         image: "./images/slide-3.jpg"
-    }
+    },
+    {
+        //     title: "Project 3",
+        //     type: "Game",
+        //     content: "Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
+        image: "./images/slide-2.jpg"
+    },
 ]
 
-projects.forEach(({title,type,content,image}, i) => {
+
+
+//  ----------------------- Project Loop ---------------------------
+
+
+
+projects.forEach(({
+    title,
+    type,
+    content,
+    image
+}, i) => {
     const slide = document.createElement('div');
     slide.classList.add('slider__slide');
     slide.style.backgroundImage = "url('" + image + "')";
+    slide.setAttribute('data-index', i);
 
     const dot = document.createElement('button');
     dot.classList.add('carousel__indicator');
+    dot.setAttribute('data-slide-to',i);
+  
 
     if (i == 0) {
         first_slide = slide;
-        
+
         slide.classList.add('active');
         first_dot = dot;
 
@@ -62,28 +83,54 @@ projects.forEach(({title,type,content,image}, i) => {
     content_content.classList.add('slider__desc');
     content_content.textContent = content;
 
+
     content_title.appendChild(content_type);
     slide_content.appendChild(content_title);
     slide_content.appendChild(content_content);
     slide.appendChild(slide_content);
     slider.appendChild(slide);
     nav.appendChild(dot);
-    
-    
+
 });
 
 
-next_btn.addEventListener('click', () => {
+// --------------------  Function -----------------
+
+
+const dot = nav.querySelectorAll('.carousel__indicator');
+
+const goToSlide = (i) => {
+    const slides = slider.querySelectorAll('.slider__slide');
+    // const slideTo = parseInt(this.getAttribute('data-slide-to'));
+    const slideTo = document.querySelectorAll('carousel__indicator')[i].getAttribute('data-slide-to');
+
     const active_slide = document.querySelector('.slider__slide.active');
-    const active_dot = document.querySelector('.carousel__indicator.current-slide')
+    const active_dot = document.querySelector('.carousel__indicator.current-slide');
+    let target = active_slide;
+    let target_dot = active_dot.nextElementSibling;
+
+};
+
+for(let i= 0; i<projects.length; i++) {
+    dot[i].addEventListener('click', goToSlide(i));
+}
+
+
+
+//  ----------------------- Next Button ---------------------------
+
+const nextSlide = () => {
+
+    const active_slide = document.querySelector('.slider__slide.active');
+    const active_dot = document.querySelector('.carousel__indicator.current-slide');
     let sibling = active_slide.nextElementSibling;
     let sibling_dot = active_dot.nextElementSibling;
-    
+
     if (sibling == null) {
         sibling = first_slide;
     }
 
-    if(sibling_dot == null) {
+    if (sibling_dot == null) {
         sibling_dot = first_dot;
     }
 
@@ -91,14 +138,23 @@ next_btn.addEventListener('click', () => {
         active_slide.classList.remove('active');
         sibling.classList.add('active');
     }
-    
-    if(sibling_dot.classList.contains('carousel__indicator')) {
+
+    if (sibling_dot.classList.contains('carousel__indicator')) {
         active_dot.classList.remove('current-slide');
         sibling_dot.classList.add('current-slide');
     }
+}
 
-});
+next_btn.addEventListener('click', nextSlide);
+
+const myInterval = setInterval(nextSlide, 2500);
+
+
+//  ----------------------- Previous Button ---------------------------
+
+
 prev_btn.addEventListener('click', () => {
+    // clearInterval(myInterval);
     const active_slide = document.querySelector('.slider__slide.active');
     const active_dot = document.querySelector('.carousel__indicator.current-slide')
     let sibling_dot = active_dot.previousElementSibling;
@@ -126,3 +182,7 @@ prev_btn.addEventListener('click', () => {
         sibling_dot.classList.add('current-slide');
     }
 });
+
+
+
+
