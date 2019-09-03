@@ -1,6 +1,7 @@
 const next_btn = document.querySelector('#next');
 const prev_btn = document.querySelector('#prev');
 const slider = document.querySelector('.slider');
+const nav = document.querySelector('.carousel__nav');
 let first_slide;
 let first_dot;
 let last_slide;
@@ -30,7 +31,6 @@ projects.forEach(({title,type,content,image}, i) => {
     slide.classList.add('slider__slide');
     slide.style.backgroundImage = "url('" + image + "')";
 
-    const carousel_nav = document.querySelector('.carousel__nav');
     const dot = document.createElement('button');
     dot.classList.add('carousel__indicator');
 
@@ -67,8 +67,8 @@ projects.forEach(({title,type,content,image}, i) => {
     slide_content.appendChild(content_content);
     slide.appendChild(slide_content);
     slider.appendChild(slide);
-    carousel_nav.appendChild(dot);
-    slider.appendChild(carousel_nav);
+    nav.appendChild(dot);
+    
     
 });
 
@@ -76,8 +76,9 @@ projects.forEach(({title,type,content,image}, i) => {
 next_btn.addEventListener('click', () => {
     const active_slide = document.querySelector('.slider__slide.active');
     const active_dot = document.querySelector('.carousel__indicator.current-slide')
-    let sibling_dot = active_dot.nextElementSibling;
     let sibling = active_slide.nextElementSibling;
+    let sibling_dot = active_dot.nextElementSibling;
+    
     if (sibling == null) {
         sibling = first_slide;
     }
