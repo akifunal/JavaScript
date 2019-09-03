@@ -96,13 +96,10 @@ projects.forEach(({
 
 // --------------------  Function -----------------
 
-
 const dot = nav.querySelectorAll('.carousel__indicator');
 
 const goToSlide = (i) => {
-    const slides = slider.querySelectorAll('.slider__slide');
-    // const slideTo = parseInt(this.getAttribute('data-slide-to'));
-    const slideTo = document.querySelectorAll('carousel__indicator')[i].getAttribute('data-slide-to');
+    const slide = slider.querySelectorAll('[data-index="i"]');
 
     const active_slide = document.querySelector('.slider__slide.active');
     const active_dot = document.querySelector('.carousel__indicator.current-slide');
