@@ -2,8 +2,8 @@ const next_btn = document.querySelector('#next');
 const prev_btn = document.querySelector('#prev');
 const slider = document.querySelector('.slider');
 let first_slide;
-let last_slide;
 let first_dot;
+let last_slide;
 let last_dot;
 let projects = [{
         title: "Project 1",
@@ -25,25 +25,22 @@ let projects = [{
     }
 ]
 
-projects.forEach(({
-    title,
-    type,
-    content,
-    image
-}, i) => {
-
-    const carousel_nav = document.querySelector('.carousel__nav');
-    const dot = document.createElement('button');
-    dot.classList.add('carousel__indicator');
+projects.forEach(({title,type,content,image}, i) => {
     const slide = document.createElement('div');
     slide.classList.add('slider__slide');
     slide.style.backgroundImage = "url('" + image + "')";
 
+    const carousel_nav = document.querySelector('.carousel__nav');
+    const dot = document.createElement('button');
+    dot.classList.add('carousel__indicator');
+
     if (i == 0) {
-        dot.classList.add('current-slide');
         first_slide = slide;
+        
         slide.classList.add('active');
         first_dot = dot;
+
+        dot.classList.add('current-slide');
     }
 
     if (i + 1 == projects.length) {
@@ -70,22 +67,10 @@ projects.forEach(({
     slide_content.appendChild(content_content);
     slide.appendChild(slide_content);
     slider.appendChild(slide);
-    slider.appendChild(carousel_nav);
     carousel_nav.appendChild(dot);
+    slider.appendChild(carousel_nav);
+    
 });
-
-const counter = projects.length;
-
-// const currentDot = (counter) => {
-//     let active_slide = document.querySelector('.active')
-//     let dots = document.getElementsByClassName("carousel__indicator");
-//     for (let i = 0; i < counter; i++) {
-//         dots[i].className = dots[i].className.replace(" current-slide", "");
-//     }
-//     dots[counter - 1].classList.add('current-slide');
-// };
-
-// currentDot(counter);
 
 
 next_btn.addEventListener('click', () => {
