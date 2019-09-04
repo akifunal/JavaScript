@@ -141,50 +141,50 @@ html,body{
 
 .galleryContainer .moveLeftCurrentSlide{
     animation-name: moveLeftCurrent;
-    animation-duration: 0.5s;
+    animation-duration: 0.8s;
     animation-timing-function: linear;
     animation-fill-mode:forwards;
 
 }
 .galleryContainer .moveLeftNextSlide{
     animation-name: moveLeftNext;
-    animation-duration: 0.5s;
+    animation-duration: 0.8s;
     animation-timing-function: linear;
-    animation-fill-mode:forwards;
+    animation-fill-mode: both;
 }
 @keyframes moveLeftCurrent {
     from {margin-left: 0;opacity: 1;}
-    to {margin-left: -100%;opacity: 1;}
+    to {margin-left: -100%;opacity: .3;}
 }
 @keyframes moveLeftNext {
-    from {margin-left: 100%;opacity: 1;}
+    from {margin-left: 100%;opacity: .3;}
     to {margin-left: 0%;opacity: 1;}
 }
 
 
 .galleryContainer .moveRightCurrentSlide{
     animation-name: moveRightCurrent;
-    animation-duration: 0.5s;
+    animation-duration: 0.8s;
     animation-timing-function: linear;
     animation-fill-mode:forwards;
 }
 .galleryContainer .moveRightPrevSlide{
     animation-name: moveRightPrev;
-    animation-duration: 0.5s;
+    animation-duration: 0.8s;
     animation-timing-function: linear;
     animation-fill-mode:forwards;
 }
 @keyframes moveRightCurrent {
     from {margin-left: 0;opacity: 1;}
-    to {margin-left: 100%;opacity: 1;}
+    to {margin-left: 100%;opacity: .4;}
 }
 @keyframes moveRightPrev {
-    from {margin-left: -100%;opacity: 1;}
+    from {margin-left: -100%;opacity: .4;}
     to {margin-left: 0%;opacity: 1;}
 }
 .slideTextFromBottom {
     animation-name: slideTextFromBottom;
-    animation-duration: 0.7s;
+    animation-duration: 1.0s;
     animation-timing-function: ease-out;
 }
 @keyframes slideTextFromBottom {
@@ -193,7 +193,7 @@ html,body{
 }
 .slideTextFromTop {
     animation-name: slideTextFromTop;
-    animation-duration: 0.7s;
+    animation-duration: 1.0s;
     animation-timing-function: ease-out;
 }
 @keyframes slideTextFromTop {
