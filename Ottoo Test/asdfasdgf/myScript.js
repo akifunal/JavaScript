@@ -163,3 +163,5 @@ console.log(timer);
 
 
 
+// ? disable sliding for a period
+// ? sliding effect is broken when i try to go other side.
