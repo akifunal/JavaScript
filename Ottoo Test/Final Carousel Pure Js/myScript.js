@@ -42,7 +42,7 @@ let images = [{
 images.forEach(({
     image,
     text
-}, i) => {
+}) => {
     const slideDiv = document.createElement('div');
     slideDiv.classList.add('imageHolder');
     const slide = document.createElement('img');
@@ -96,7 +96,7 @@ const initGallery = () => {
 }
 initGallery();
 
-let timer = null;
+let timer = null;  /* timer for setTimer function */
 
 const plusSlides = (n) => {
     moveSlide(slideIndex + n);
