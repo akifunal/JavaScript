@@ -61,7 +61,7 @@ images.forEach(({
 
 //!       Initialize function
 
-let slideIndex, slides, dots, captionText;
+let slideIndex, slides, captionText;
 
 const initGallery = () => {
     slideIndex = 0;
@@ -96,7 +96,7 @@ const initGallery = () => {
 }
 initGallery();
 
-let timer = null;  /* timer for setTimer function */
+let timer = null; /* timer for setTimer function */
 
 const plusSlides = (n) => {
     moveSlide(slideIndex + n);
