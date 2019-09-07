@@ -148,7 +148,8 @@ const moveSlide = (n) => {
         captionText.innerText = slides[n].querySelector(".captionText").innerText;
         captionText.style.display = "block";
     }
-
+    console.log(next);
+    console.log(current);
 }
 
 

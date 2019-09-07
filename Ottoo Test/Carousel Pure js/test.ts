@@ -42,32 +42,32 @@ console.log(b);
 
 
 
-let slideIndex: number, slides: any, captionText: string;
+let slideIndex: number, slides: any, captionText: any;
 
 
-interface initializeFunction {
-  (): boolean;
-}
+// interface initializeFunction {
+//   (): boolean;
+// }
 
 const initGallery: () => {
   slideIndex: number = 0;
-  slides: {} = document.getElementsByClassName("imageHolder");
-  slides[slideIndex].style.opacity = 1;
+  slides: HTMLCollectionOf<Element> = document.getElementsByClassName("imageHolder");
+slides[slideIndex].style.opacity = 1;
 captionText = document.querySelector(".captionTextHolder .captionText");
 captionText.innerText = slides[slideIndex].querySelector(".captionText").innerText;
 //!   Disable nextPrevBtn if slide count is one
 if (slides.length < 2) {
-  var nextPrevBtns = document.querySelector(".leftArrow,.rightArrow");
-  nextPrevBtns.style.display = "none";
-  for (i = 0; i < nextPrevBtn.length; i++) {
+  const nextPrevBtn = document.querySelector(".leftArrow,.rightArrow");
+  nextPrevBtn.style.display = "none";
+  for (let i: number = 0; i < nextPrevBtn.length; i++) {
     nextPrevBtn[i].style.display = "none";
   }
 }
-//?         Addition of dots 
-let dots = [];
-const dotsContainer = document.getElementById("dotsContainer"),
-  i;
-for (let i = 0; i < slides.length; i++) {
+//?         Addition of dots    
+let dots: HTMLSpanElement[] = [];
+let dotsContainer = document.getElementById("dotsContainer"),
+  i: number;
+for (i = 0; i < slides.length; i++) {
   const dot = document.createElement("span");
   dot.classList.add("dots");
   dotsContainer.append(dot);
@@ -80,20 +80,22 @@ dots[slideIndex].classList.add("active");
 
 initGallery();
 let timer = null; /* timer for setTimer function */
-const plusSlides: (n: number) => {
+const plusSlides: (n: number) => void = (n) => {
   moveSlide(slideIndex + n);
 };
+
+
 //  !      Move function of slides.
-var moveSlide = function (n: number) {
+const moveSlide: (n: number) => void = (n) => {
   clearInterval(timer);
   setTimer();
-  var i;
-  var current, next;
-  var moveSlideAnimClass = {
+  let i: number;
+  let current: any, next: any;
+  const moveSlideAnimClass = {
     forCurrent: "",
     forNext: ""
   };
-  var slideTextAnimClass;
+  let slideTextAnimClass: string;
   if (n > slideIndex) {
     if (n >= slides.length) {
       n = 0;
@@ -125,9 +127,12 @@ var moveSlide = function (n: number) {
     captionText.className = "captionText " + slideTextAnimClass;
     captionText.innerText = slides[n].querySelector(".captionText").innerText;
     captionText.style.display = "block";
+    console.log(current);
+    console.log(next);
   }
 };
-var setTimer = function () {
+
+const setTimer: () => void = () => {
   timer = setInterval(function () {
     plusSlides(1);
   }, 3000);
