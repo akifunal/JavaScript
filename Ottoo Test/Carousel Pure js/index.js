@@ -76,9 +76,9 @@ const initGallery = () => {
     if (slides.length < 2) {
         const nextPrevBtns = document.querySelector(".leftArrow,.rightArrow");
         nextPrevBtns.style.display = "none";
-        for (i = 0; i < nextPrevBtn.length; i++) {
-            nextPrevBtn[i].style.display = "none";
-        }
+        // for (i = 0; i < nextPrevBtn.length; i++) {
+        //     nextPrevBtn[i].style.display = "none";
+        // }
     }
 
     //?         Addition of dots 

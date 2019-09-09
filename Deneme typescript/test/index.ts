@@ -1,4 +1,4 @@
-const imagesTest: ReadonlyArray<{ image?: string, text?: string }> = [
+let imagesTest: ReadonlyArray<{ image?: string, text?: string }> = [
   {
     image: "./images/slide-4.png",
     text: "Small robot with wings."
@@ -42,7 +42,7 @@ console.log(b);
 
 
 
-let slideIndex: number, slides: any, captionText: any;
+let slideIndex: number, slides: any, captionText, dots: HTMLSpanElement[];
 
 
 // interface initializeFunction {
@@ -51,32 +51,31 @@ let slideIndex: number, slides: any, captionText: any;
 
 // !   Disable nextPrevBtn if slide count is one
 
-const initGallery: () => {
-  slideIndex: number = 1;
-  slides: HTMLCollectionOf<Element> = document.getElementsByClassName("imageHolder");
+const initGallery = (): void => {
+  slideIndex = 1;
+  slides = document.getElementsByClassName("imageHolder");
   slides[slideIndex].style.opacity = 1;
-captionText = document.querySelector(".captionTextHolder .captionText");
-captionText.innerText = slides[slideIndex].querySelector(".captionText").innerText;
+  captionText = document.querySelector(".captionTextHolder .captionText");
+  captionText.innerText = slides[slideIndex].querySelector(".captionText").innerText;
 
-if (slides.length < 2) {
-  const nextPrevBtn = document.querySelector("leftArrow,rightArrow");
-  nextPrevBtn.setAttribute("style", "display:none;");
-  for (let i: number = 0; i < nextPrevBtn.length; i++) {
-    nextPrevBtn[i].style.display = "none";
+  if (slides.length < 2) {
+    const nextPrevBtn = document.querySelector("leftArrow,rightArrow");
+    nextPrevBtn.setAttribute("style", "display:none;");
+    // for (let i: number = 0; i < nextPrevBtn.length; i++) {
+    //   nextPrevBtn[i].style.display = "none";
+    // }
   }
-}
-//?         Addition of dots    
-let dots: HTMLSpanElement[] = [];
-let dotsContainer = document.getElementById("dotsContainer"),
-  i: number;
-for (i = 0; i < slides.length; i++) {
-  const dot = document.createElement("span");
-  dot.classList.add("dots");
-  dotsContainer.append(dot);
-  dot.setAttribute("onclick", "moveSlide(" + i + ")");
-  dots.push(dot);
-}
-dots[slideIndex].classList.add("active");
+  //?         Addition of dots    
+  let dotsContainer = document.getElementById("dotsContainer"),
+    i: number;
+  for (i = 0; i < slides.length; i++) {
+    const dot = document.createElement("span");
+    dot.classList.add("dots");
+    dotsContainer.append(dot);
+    dot.setAttribute("onclick", "moveSlide(" + i + ")");
+    dots.push(dot);
+  }
+  dots[slideIndex].classList.add("active");
 };
 
 
@@ -134,7 +133,7 @@ const moveSlide: (n: number) => void = (n) => {
   }
 };
 
-const setTimer: () => void = () => {
+const setTimer = (): void => {
   timer = setInterval(function () {
     plusSlides(1);
   }, 3000);
