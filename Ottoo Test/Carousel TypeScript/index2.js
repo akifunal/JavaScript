@@ -1,5 +1,8 @@
-let imagesTest: ReadonlyArray<{ image?: string, text?: string }> = [
-  {
+// -----------------------------------------------------------
+//!       Images array
+// -----------------------------------------------------------
+
+let images = [{
     image: "./images/slide-4.png",
     text: "Small robot with wings."
   },
@@ -34,9 +37,9 @@ let imagesTest: ReadonlyArray<{ image?: string, text?: string }> = [
   }
 ];
 
-//?  Test
+//!     Addition of array items to page.
 
-imagesTest.forEach(({
+images.forEach(({
   image,
   text
 }) => {
@@ -56,62 +59,62 @@ imagesTest.forEach(({
 
 });
 
+//!       Initialize function
 
-let slideIndex: number, slides: any, captionText, dots: HTMLSpanElement[];
+let slideIndex, slides, captionText;
 
-
-// interface initializeFunction {
-//   (): boolean;
-// }
-
-// !   Disable nextPrevBtn if slide count is one
-
-const initGallery = (): void => {
-  slideIndex = 1;
+const initGallery = () => {
+  slideIndex = 0;
   slides = document.getElementsByClassName("imageHolder");
   slides[slideIndex].style.opacity = 1;
+
   captionText = document.querySelector(".captionTextHolder .captionText");
   captionText.innerText = slides[slideIndex].querySelector(".captionText").innerText;
 
+  //!   Disable nextPrevBtn if slide count is one
+
   if (slides.length < 2) {
-    const nextPrevBtn = document.querySelector("leftArrow,rightArrow");
-    nextPrevBtn.setAttribute("style", "display:none;");
-    // for (let i: number = 0; i < nextPrevBtn.length; i++) {
-    //   nextPrevBtn[i].style.display = "none";
-    // }
+    const nextPrevBtns = document.getElementsByClassName("leftArrow,rightArrow");
+    nextPrevBtns.style.display = "none";
+    for (i = 0; i < nextPrevBtn.length; i++) {
+      nextPrevBtn[i].style.display = "none";
+    }
   }
-  //?         Addition of dots    
+
+  //?         Addition of dots 
+  dots = [];
   let dotsContainer = document.getElementById("dotsContainer"),
-    i: number;
+    i;
   for (i = 0; i < slides.length; i++) {
-    const dot = document.createElement("span");
+    var dot = document.createElement("span");
     dot.classList.add("dots");
     dotsContainer.append(dot);
     dot.setAttribute("onclick", "moveSlide(" + i + ")");
     dots.push(dot);
   }
   dots[slideIndex].classList.add("active");
-};
-
-
+}
 initGallery();
+
 let timer = null; /* timer for setTimer function */
-const plusSlides: (n: number) => void = (n) => {
+
+const plusSlides = (n) => {
   moveSlide(slideIndex + n);
-};
+}
 
 
 //  !      Move function of slides.
-const moveSlide: (n: number) => void = (n) => {
+
+const moveSlide = (n) => {
   clearInterval(timer);
   setTimer();
-  let i: number;
-  let current: any, next: any;
+  let i;
+  let current, next;
   const moveSlideAnimClass = {
     forCurrent: "",
     forNext: ""
   };
-  let slideTextAnimClass: string;
+  let slideTextAnimClass;
   if (n > slideIndex) {
     if (n >= slides.length) {
       n = 0;
@@ -127,6 +130,7 @@ const moveSlide: (n: number) => void = (n) => {
     moveSlideAnimClass.forNext = "moveRightPrevSlide";
     slideTextAnimClass = "slideTextFromBottom";
   }
+
   if (n != slideIndex) {
     next = slides[n];
     current = slides[slideIndex];
@@ -143,15 +147,21 @@ const moveSlide: (n: number) => void = (n) => {
     captionText.className = "captionText " + slideTextAnimClass;
     captionText.innerText = slides[n].querySelector(".captionText").innerText;
     captionText.style.display = "block";
-    console.log(current);
-    console.log(next);
   }
-};
 
-const setTimer = (): void => {
-  timer = setInterval(function () {
+}
+
+
+const setTimer = () => {
+  timer = setInterval(() => {
     plusSlides(1);
   }, 3000);
-};
+}
 setTimer();
 console.log(timer);
+
+
+
+
+// ? disable sliding for a period
+// ? sliding effect is broken when i try to go other side.
