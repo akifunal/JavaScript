@@ -74,7 +74,7 @@ const initGallery = () => {
     //!   Disable nextPrevBtn if slide count is one
 
     if (slides.length < 2) {
-        const nextPrevBtns = document.querySelector(".leftArrow,.rightArrow");
+        const nextPrevBtns = document.getElementsByClassName("leftArrow,rightArrow");
         nextPrevBtns.style.display = "none";
         for (i = 0; i < nextPrevBtn.length; i++) {
             nextPrevBtn[i].style.display = "none";

@@ -1,4 +1,4 @@
-let imagesTest: ReadonlyArray<{ image?: string, text?: string }> = [
+const imagesTest: ReadonlyArray<{ image?: string, text?: string }> = [
   {
     image: "./images/slide-4.png",
     text: "Small robot with wings."
@@ -49,16 +49,18 @@ let slideIndex: number, slides: any, captionText: any;
 //   (): boolean;
 // }
 
+// !   Disable nextPrevBtn if slide count is one
+
 const initGallery: () => {
-  slideIndex: number = 0;
+  slideIndex: number = 1;
   slides: HTMLCollectionOf<Element> = document.getElementsByClassName("imageHolder");
-slides[slideIndex].style.opacity = 1;
+  slides[slideIndex].style.opacity = 1;
 captionText = document.querySelector(".captionTextHolder .captionText");
 captionText.innerText = slides[slideIndex].querySelector(".captionText").innerText;
-//!   Disable nextPrevBtn if slide count is one
+
 if (slides.length < 2) {
-  const nextPrevBtn = document.querySelector(".leftArrow,.rightArrow");
-  nextPrevBtn.style.display = "none";
+  const nextPrevBtn = document.querySelector("leftArrow,rightArrow");
+  nextPrevBtn.setAttribute("style", "display:none;");
   for (let i: number = 0; i < nextPrevBtn.length; i++) {
     nextPrevBtn[i].style.display = "none";
   }
