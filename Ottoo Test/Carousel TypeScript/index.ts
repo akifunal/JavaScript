@@ -40,7 +40,7 @@ imagesTest.forEach(({
   image,
   text
 }) => {
-  const slideDiv = document.createElement('div');
+  const slideDiv = document.createElement('div') as HTMLDivElement;
   slideDiv.classList.add('imageHolder');
   const slide = document.createElement('img');
   slide.src = image;
