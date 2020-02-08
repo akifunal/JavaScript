@@ -21,3 +21,4 @@ let markBMI = markMass / (markHeight * markHeight);
 let johnBMI = johnMass / (johnHeight * johnHeight);
 let result = markBMI > johnBMI;
 console.log('Is Mark\'s BMI higher than John\'s?', result);
+console.log(typeof markMass);
