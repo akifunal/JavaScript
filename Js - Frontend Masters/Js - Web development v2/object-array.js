@@ -35,15 +35,72 @@ ${this.location.country}`;
 
 
 
-const test = {
-  benim: {
-    name: "Akif",
-    surName: "Unal"
-  },
-  getName() {
-    console.log(this.benim.name);
-  }
+// Length property
+console.log(name.length)
+// Convert to upper case
+console.log(name.toUpperCase())
+// Convert to lower case
+console.log(name.toLowerCase())
+let password = 'abc123asdf098'
+// Includes method
+console.log(password.includes('password'))
 
+
+let num = 103.941
+// Specify decimal points
+console.log(num.toFixed(2))
+// Round numbers
+console.log(Math.round(num))
+console.log(Math.floor(num))
+console.log(Math.ceil(num))
+
+// Generate a random number
+let randomNum = (min, max) => {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+for (let i = 1; i <= 10; i++) {
+  console.log(randomNum(5, 10));
 }
 
-test.getName();
+
+
+// Arrays
+const courses = [{
+    teacher: "Kyle Simpson",
+    course: "JS Function Lite"
+  },
+  {
+    teacher: "Sarah Drasner",
+    course: "Intro to Vue"
+  },
+  {
+    teacher: "Brian Holt",
+    course: "Complete Intro to React v3"
+  },
+  {
+    teacher: "Steve Kinney",
+    course: "State Management"
+  }
+];
+
+console.log(courses.length);
+console.log(courses[0]);
+courses.pop();
+console.log(courses.join(" | "));
+
+
+const cities = [
+  "Seattle",
+  "San Francisco",
+  "Salt Lake City",
+  "Amsterdam",
+  "Hong Kong"
+];
+
+// for(let i = 0; i < cities.length; i++) {
+//   console.log(cities[i]);
+// }
+
+cities.forEach((el, index) => {
+  console.log(index, el);
+})
