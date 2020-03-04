@@ -57,7 +57,7 @@ while (word !== "yes" || word !== "no") {
   console.log(word);
 };
 
-// FizzBuzz Solution
+//! FizzBuzz Solution
 
 for (let i = 1; i <= 100; i++) {
   if (i % 3 === 0 && i % 5 === 0) {
