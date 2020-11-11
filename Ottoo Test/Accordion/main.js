@@ -42,32 +42,40 @@ accordions.forEach(({
 
 });
 
+// const accordionCheck = document.getElementsByClassName('accordion');
+// for (let i = 0; i < accordionCheck.length; i++) {
+//     accordionCheck[i].addEventListener('click', function () {
+//         accordionCheck
+//     })
+// }
 
 const accordionCheck = document.getElementsByClassName('accordion');
 for (let i = 0; i < accordionCheck.length; i++) {
-    accordionCheck[i].addEventListener('click', function () {
-        if(document.querySelector('button').classList.contains('active')) {
-            const accordionActiveSibling = document.querySelector('.active');
-            const panelNextSibling = accordionActiveSibling.nextElementSibling;
-            if(panelNextSibling.style.maxHeight) {
-                panelNextSibling.style.maxHeight = null;
-                console.log('Test');
-            }else {
-                panelNextSibling.style.maxHeight = '';
-                console.log('Test false');
-            }
-        }else {
-            // console.log('test');
-        }
-       
+    accordionCheck[i].addEventListener('click', toggleItem);
+}
 
-        this.classList.toggle("active");
-        const panelNext = this.nextElementSibling;
-        if (panelNext.style.maxHeight) {
-            panelNext.style.maxHeight = ''; // why not 0 ? 0 == false?
+function toggleItem() {
+    if (document.querySelector('button').classList.contains('active')) {
+        const accordionActiveSibling = document.querySelector('.active');
+        const panelNextSibling = accordionActiveSibling.nextElementSibling;
+        if (panelNextSibling.style.maxHeight) {
+            panelNextSibling.style.maxHeight = null;
+            console.log('Test');
         } else {
-            panelNext.style.maxHeight = panelNext.scrollHeight + "px";
+            panelNextSibling.style.maxHeight = '';
+            console.log('Test false');
         }
+    } else {
+        // console.log('test');
+    }
 
-    })
+
+    this.classList.toggle("active");
+    const panelNext = this.nextElementSibling;
+    if (panelNext.style.maxHeight) {
+        panelNext.style.maxHeight = ''; // why not 0 ? 0 == false?
+    } else {
+        panelNext.style.maxHeight = panelNext.scrollHeight + "px";
+    }
+
 }
