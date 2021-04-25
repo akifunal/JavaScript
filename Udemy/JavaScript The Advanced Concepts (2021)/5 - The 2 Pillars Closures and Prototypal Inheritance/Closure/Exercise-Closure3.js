@@ -3,11 +3,10 @@ const array = [1, 2, 3, 4];
 for (let i = 0; i < array.length; i++) {
   setTimeout(function () {
     console.log("I am at index " + array[i]);
-  }, 3000);
+  }, i * 1000);
 }
 
 //* Second solution
-
 const array = [1, 2, 3, 4];
 for (var i = 0; i < array.length; i++) {
   //IIFE to create closure for every iteration
@@ -18,16 +17,19 @@ for (var i = 0; i < array.length; i++) {
 }
 
 //--
+const array = [1, 2, 3, 4];
 for (var i = 0; i < array.length; i++) {
-  function test(index) {
-    setTimeout(function () {
-      console.log("I am at index " + array[index]);
-    }, i * 1000);
-  }
-  test(i);
+  logItem(i);
+}
+
+function logItem(index) {
+  setTimeout(function () {
+    console.log("I am at index " + array[index]);
+  }, i * 1000);
 }
 
 //--
+const array = [1, 2, 3, 4];
 for (var i = 0; i < array.length; i++) {
   setTimeout(
     function (loopIndex) {
