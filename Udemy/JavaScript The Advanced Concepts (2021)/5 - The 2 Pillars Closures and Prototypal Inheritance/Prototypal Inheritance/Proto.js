@@ -18,6 +18,11 @@ let lizard = {
   },
 };
 
+//
+for (let prop of Object.keys(lizard)) {
+  console.log(prop);
+}
+
 // Don't do this, bad performance. Show with bind.
 lizard.__proto__ = dragon;
 dragon.isPrototypeOf(lizard);
