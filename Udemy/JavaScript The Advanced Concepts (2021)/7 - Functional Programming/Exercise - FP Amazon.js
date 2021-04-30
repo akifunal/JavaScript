@@ -14,21 +14,37 @@ console.log(user["purchases"]);
 // 3. Buy item: cart --> purchases
 // 4. Empty cart
 
-function addItem(obj, item) {
+const item = {
+	name: "ps5",
+	price: 500,
+};
+
+const item2 = {
+	name: "pc",
+	price: 1600,
+};
+
+function addItemToCart(obj, item) {
 	obj.cart.push(item);
+	obj.cart.map((item) => (item.price += item.price * 0.03));
 }
 
-function addTax(obj, index) {
-	obj.cart[index] += (obj.cart[index] * 3) / 100;
-}
-
-function buyItem(obj, index) {
-	purchases.push(obj.cart[index]);
-}
-
-function emptyCart(obj) {
+function buyItem(obj) {
+	obj.cart.forEach((item) => obj.purchases.push(item));
 	obj.cart.splice(0, obj.cart.length);
 }
+
+function purchaseItem(obj, item) {
+	addItemToCart(obj, item);
+	buyItem(obj);
+}
+
+// addItemToCart(user, item);
+// addItemToCart(user, item2);
+// buyItem(user);
+purchaseItem(user, item);
+purchaseItem(user, item2);
+user;
 
 //Bonus:
 // accept refunds.
