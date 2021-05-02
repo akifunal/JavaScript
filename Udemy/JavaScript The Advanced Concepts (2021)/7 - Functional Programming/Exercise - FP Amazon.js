@@ -39,9 +39,10 @@ function purchaseItem(obj, item) {
 	buyItem(obj);
 }
 
-// addItemToCart(user, item);
-// addItemToCart(user, item2);
-// buyItem(user);
+// const compose = (f, g) => (data) => f(g(data));
+
+// const purchaseItem = compose(buyItem, addItemToCart);
+
 purchaseItem(user, item);
 purchaseItem(user, item2);
 user;
